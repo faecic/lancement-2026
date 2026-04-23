@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAECIC — Fondation des Anciens Élèves du Collège Immaculée-Conception</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #1E90FF;
+    --sky-dark: #0E7FDB;
+    --navy: #0A1E3F;
+    --navy-mid: #1a3460;
+    --warm-white: #FAFAF8;
+    --cream: #F5F1E8;
+    --gold: #D4AF37;
+    --warm-gray: #7A7A7A;
+    --emerald: #2D7D6E;
+    --rust: #B85C4F;
+    --coral: #F4A896;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,30,63,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+
+  .nav-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-mark svg { width: 36px; height: 36px; }
+
+  .nav-mark-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: #fff;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--sky);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--sky-dark) !important; color: #fff !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212,175,55,0.15);
+    border: 1px solid rgba(212,175,55,0.35);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-mark {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 7vw, 84px);
+    font-weight: 300;
+    line-height: 1.08;
+    color: #fff;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--sky);
+  }
+
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .hero-rally {
+    font-family: var(--font-display);
+    font-size: clamp(15px, 2vw, 19px);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--sky);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--sky-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.35);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ─── RALLIEMENT HISTORY SECTION ─── */
+  #ralliement {
+    background: var(--cream);
+    padding: 100px 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title strong {
+    font-weight: 600;
+  }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3.5rem;
+  }
+
+  .history-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2a3a55;
+    margin-bottom: 1.25rem;
+  }
+
+  .history-text p:last-child { margin-bottom: 0; }
+
+  .history-quote {
+    background: var(--navy);
+    color: #fff;
+    padding: 3rem;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .history-quote::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 120px;
+    color: rgba(212,175,55,0.25);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .history-quote blockquote {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .history-quote cite {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .timeline {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .timeline-item {
+    background: var(--navy);
+    padding: 2rem 1.75rem;
+    position: relative;
+  }
+
+  .timeline-item:first-child { border-radius: 4px 0 0 4px; }
+  .timeline-item:last-child { border-radius: 0 4px 4px 0; }
+
+  .timeline-year {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-text {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .timeline-connector {
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 60%;
+    background: rgba(212,175,55,0.3);
+  }
+
+  /* ─── LETTER ─── */
+  #lettre {
+    background: var(--warm-white);
+    padding: 100px 2rem;
+  }
+
+  .letter-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .letter-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(10,30,63,0.12);
+  }
+
+  .letter-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--navy);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .letter-avatar-initials {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .letter-author-info h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .letter-author-info p {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+  }
+
+  .letter-author-info .letter-date {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--sky);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .letter-body {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.75;
+    color: #1a2a40;
+  }
+
+  .letter-body .salutation {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .letter-body p { margin-bottom: 1.5rem; }
+
+  .letter-body p:last-child { margin-bottom: 0; }
+
+  .letter-body .highlight-para {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+  }
+
+  .letter-body .letter-closing {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(10,30,63,0.1);
+  }
+
+  .letter-body .letter-signature {
+    font-weight: 600;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .letter-expand-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2rem auto 0;
+    background: none;
+    border: 1.5px solid rgba(10,30,63,0.2);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .letter-expand-btn:hover {
+    border-color: var(--navy);
+    background: rgba(10,30,63,0.05);
+  }
+
+  .letter-collapsed { max-height: 420px; overflow: hidden; position: relative; }
+
+  .letter-collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--warm-white));
+  }
+
+  /* ─── MISSION / FAECIC ─── */
+  #mission {
+    background: var(--navy);
+    padding: 100px 2rem;
+    color: #fff;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-top: 3.5rem;
+  }
+
+  .mission-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    transition: background 0.25s;
+  }
+
+  .mission-card:hover { background: rgba(255,255,255,0.07); }
+
+  .mission-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .mission-icon.sky { background: rgba(30,144,255,0.15); }
+  .mission-icon.gold { background: rgba(212,175,55,0.15); }
+  .mission-icon.emerald { background: rgba(45,125,110,0.15); }
+
+  .mission-card h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .mission-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+  }
+
+
+
+  /* ─── REGISTER / FORM ─── */
+  #rejoindre {
+    background: var(--warm-white);
+    padding: 100px 2rem;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .form-intro p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #3a4a60;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-roles {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .role-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .role-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .role-dot.sky { background: var(--sky); }
+  .role-dot.gold { background: var(--gold); }
+  .role-dot.emerald { background: var(--emerald); }
+
+  .form-card {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 2.5rem;
+    color: #fff;
+  }
+
+  .form-card h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-card .form-card-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 2rem;
+    line-height: 1.55;
+  }
+
+  .form-field {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 11px 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-field input::placeholder,
+  .form-field select::placeholder,
+  .form-field textarea::placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--sky);
+  }
+
+  .form-field select option { background: var(--navy); color: #fff; }
+
+  .form-field textarea { resize: vertical; min-height: 80px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--sky);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--sky-dark); }
+
+  .form-google-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .form-google-link:hover { color: rgba(255,255,255,0.75); }
+
+  /* ─── STATUTS ─── */
+  #statuts {
+    background: var(--cream);
+    padding: 80px 2rem;
+  }
+
+  .statuts-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .statuts-doc-preview {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(10,30,63,0.12);
+    overflow: hidden;
+  }
+
+  .doc-header {
+    background: var(--navy);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .doc-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(212,175,55,0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .doc-title-block h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .doc-title-block p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .doc-sections {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .doc-section-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+
+  .doc-section-row:hover { background: var(--cream); }
+
+  .doc-section-num {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold);
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .doc-section-label {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .doc-action {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(10,30,63,0.08);
+  }
+
+  .doc-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px;
+    border: 1.5px solid var(--navy);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .doc-download:hover { background: var(--navy); color: #fff; }
+
+  .statuts-text .section-title { margin-bottom: 1.5rem; }
+
+
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    padding: 60px 2rem 32px;
+    text-align: center;
+    border-top: 1px solid rgba(212,175,55,0.2);
+  }
+
+  .footer-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-rally {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-motto {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-bottom {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.1); }
+  }
+
+  @keyframes threadConverge {
+    0% { stroke-dashoffset: 200; opacity: 0; }
+    40% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0.75; }
+  }
+
+  @keyframes pulseAnchor {
+    0%, 100% { r: 6; opacity: 0.8; }
+    50% { r: 8; opacity: 1; }
+  }
+
+  .thread-line {
+    stroke-dasharray: 200;
+    animation: threadConverge 3.5s ease-in-out infinite;
+  }
+
+  .anchor-circle { animation: pulseAnchor 2.5s ease-in-out infinite; }
+
+  /* ─── SECTION REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── ACCORDIONS ─── */
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2.5rem;
+  }
+
+  .accordion-item {
+    background: #fff;
+    border: 1px solid rgba(10,30,63,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .accordion-item.expanded {
+    box-shadow: 0 4px 16px rgba(10,30,63,0.06);
+  }
+
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(10,30,63,0.06);
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .accordion-item.expanded .accordion-header {
+    background: var(--navy);
+    border-bottom-color: rgba(10,30,63,0.15);
+  }
+
+  .accordion-item.expanded .accordion-header h4 {
+    color: #fff;
+  }
+
+  .accordion-item.expanded .accordion-header .accordion-num {
+    color: var(--gold);
+  }
+
+  .accordion-header:hover {
+    background: rgba(10,30,63,0.03);
+  }
+
+  .accordion-item.expanded .accordion-header:hover {
+    background: var(--navy-mid);
+  }
+
+  .accordion-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .accordion-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--sky);
+    min-width: 42px;
+  }
+
+  .accordion-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .accordion-toggle {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .accordion-item.expanded .accordion-toggle {
+    transform: rotate(180deg);
+  }
+
+  .accordion-toggle svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--navy);
+  }
+
+  .accordion-item.expanded .accordion-toggle svg {
+    stroke: var(--gold);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .accordion-item.expanded .accordion-content {
+    max-height: 3000px;
+  }
+
+  .accordion-body {
+    padding: 1.5rem;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #3a4a60;
+  }
+
+  .accordion-body p {
+    margin-bottom: 1rem;
+  }
+
+  .accordion-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .accordion-body ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .accordion-body li {
+    margin-bottom: 0.75rem;
+  }
+
+  .statute-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .history-grid, .form-container, .statuts-content, .mission-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .timeline { grid-template-columns: 1fr; gap: 2px; }
+    .timeline-item:first-child { border-radius: 4px 4px 0 0; }
+    .timeline-item:last-child { border-radius: 0 0 4px 4px; }
+    .history-quote blockquote { font-size: 22px; }
+    .entities-flow { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-mark" href="#hero">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="6" fill="#D4AF37" class="anchor-circle"/>
+      <line class="thread-line" x1="5" y1="5" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round"/>
+      <line class="thread-line" x1="55" y1="5" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" style="animation-delay:0.4s"/>
+      <line class="thread-line" x1="5" y1="55" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" style="animation-delay:0.8s"/>
+      <line class="thread-line" x1="55" y1="55" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" style="animation-delay:1.2s"/>
+      <line class="thread-line" x1="30" y1="3" x2="30" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" style="animation-delay:0.6s"/>
+      <line class="thread-line" x1="30" y1="57" x2="30" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" style="animation-delay:1.0s"/>
+    </svg>
+    <span class="nav-mark-label">FAECIC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#ralliement">Le Ralliement</a></li>
+    <li><a href="#lettre">Lettre fondatrice</a></li>
+    <li><a href="#mission">La Fondation</a></li>
+    <li><a href="#statuts">Statuts</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Animated background threads -->
+  <svg class="hero-bg-lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="900" x2="720" y2="450" stroke="#1E90FF" stroke-width="0.5" opacity="0.08"/>
+    <line x1="1440" y1="900" x2="720" y2="450" stroke="#1E90FF" stroke-width="0.5" opacity="0.08"/>
+    <line x1="0" y1="0" x2="720" y2="450" stroke="#1E90FF" stroke-width="0.5" opacity="0.06"/>
+    <line x1="1440" y1="0" x2="720" y2="450" stroke="#1E90FF" stroke-width="0.5" opacity="0.06"/>
+    <line x1="720" y1="0" x2="720" y2="450" stroke="#D4AF37" stroke-width="0.5" opacity="0.12"/>
+    <line x1="200" y1="0" x2="720" y2="450" stroke="#D4AF37" stroke-width="0.5" opacity="0.05"/>
+    <line x1="1240" y1="0" x2="720" y2="450" stroke="#D4AF37" stroke-width="0.5" opacity="0.05"/>
+    <circle cx="720" cy="450" r="4" fill="#D4AF37" opacity="0.6"/>
+    <circle cx="720" cy="450" r="80" stroke="#D4AF37" stroke-width="0.5" fill="none" opacity="0.04"/>
+    <circle cx="720" cy="450" r="160" stroke="#1E90FF" stroke-width="0.5" fill="none" opacity="0.04"/>
+    <circle cx="720" cy="450" r="260" stroke="#1E90FF" stroke-width="0.5" fill="none" opacity="0.03"/>
+  </svg>
+
+  <!-- Convergence mark -->
+  <div class="hero-mark">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="10" fill="#D4AF37"/>
+      <line class="thread-line" x1="10" y1="10" x2="60" y2="60" stroke="#1E90FF" stroke-width="2" stroke-linecap="round"/>
+      <line class="thread-line" x1="110" y1="10" x2="60" y2="60" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" style="animation-delay:0.5s"/>
+      <line class="thread-line" x1="10" y1="110" x2="60" y2="60" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" style="animation-delay:1s"/>
+      <line class="thread-line" x1="110" y1="110" x2="60" y2="60" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" style="animation-delay:1.5s"/>
+      <line class="thread-line" x1="60" y1="5" x2="60" y2="60" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" style="animation-delay:0.75s"/>
+      <line class="thread-line" x1="60" y1="115" x2="60" y2="60" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" style="animation-delay:1.25s"/>
+      <line class="thread-line" x1="5" y1="60" x2="60" y2="60" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" style="animation-delay:0.25s"/>
+      <line class="thread-line" x1="115" y1="60" x2="60" y2="60" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" style="animation-delay:1.75s"/>
+    </svg>
+  </div>
+
+  <div class="hero-badge">
+    <span>✦</span> Gonaïves, Haïti — Jubilé de Diamant 2026
+  </div>
+
+  <h1 class="hero-headline">
+    Le <em>ralliement</em> des fils<br>et filles du CIC
+  </h1>
+
+  <p class="hero-sub">
+    Fondation des Anciens Élèves du Collège Immaculée-Conception — 
+    soixante ans d'excellence, une seule famille, un seul avenir.
+  </p>
+
+  <p class="hero-rally">« CICéen, une journée&nbsp;! CICéen toujours&nbsp;! »</p>
+
+  <div class="hero-actions">
+    <a href="#lettre" class="btn-primary">Lire la lettre fondatrice</a>
+    <a href="#statuts" class="btn-outline">Explorer les statuts</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- RALLIEMENT HISTORIQUE -->
+<section id="ralliement">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">Racines &amp; Héritage</p>
+    <h2 class="section-title reveal">
+      Le <strong>ralliement</strong> — une tradition haïtienne
+    </h2>
+
+    <div style="max-width:820px; margin:2.5rem auto 0; text-align:center;">
+      <p style="font-size:18px; line-height:1.75; color:#2a3a55; margin-bottom:2rem;" class="reveal">
+        Gonaïves, lieu de la proclamation d'indépendance en 1804, accueille aujourd'hui la FAECIC. Des anciens élèves éparpillés du monde entier — de Gonaïves à Paris, de Miami à Montréal — convergent à nouveau vers leur Alma Mater. <em>CICéen, une journée ! CICéen toujours !</em>
+      </p>
+      
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; margin-top:2.5rem;" class="reveal">
+        <div style="background:var(--navy); color:#fff; padding:1.5rem; text-align:center; border-radius:4px;">
+          <span style="font-family:var(--font-display); font-size:36px; font-weight:600; color:var(--gold); display:block; margin-bottom:0.5rem;">1804</span>
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin:0;">Indépendance proclamée</p>
+        </div>
+        <div style="background:var(--navy); color:#fff; padding:1.5rem; text-align:center; border-radius:4px;">
+          <span style="font-family:var(--font-display); font-size:36px; font-weight:600; color:var(--gold); display:block; margin-bottom:0.5rem;">1966</span>
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin:0;">CIC fondé</p>
+        </div>
+        <div style="background:var(--navy); color:#fff; padding:1.5rem; text-align:center; border-radius:4px;">
+          <span style="font-family:var(--font-display); font-size:36px; font-weight:600; color:var(--gold); display:block; margin-bottom:0.5rem;">2026</span>
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin:0;">FAECIC lancée</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTRE FONDATRICE -->
+<section id="lettre">
+  <div class="section-container" style="max-width:820px;">
+    <p class="section-eyebrow reveal">Lettre fondatrice</p>
+    <h2 class="section-title reveal">Un appel au ralliement</h2>
+    <p style="font-size:15px; color:var(--warm-gray); margin-bottom:3rem;" class="reveal">
+      Roma, 22 avril 2026 — P. Nestor Fils-Aimé, c.s.v., Supérieur général des Clercs de Saint-Viateur
+    </p>
+  </div>
+
+  <div class="letter-wrapper">
+    <div class="letter-header reveal">
+      <div class="letter-avatar">
+        <span class="letter-avatar-initials">NFA</span>
+      </div>
+      <div class="letter-author-info">
+        <h3>P. Nestor Fils-Aimé, c.s.v.</h3>
+        <p>Supérieur général des Clercs de Saint-Viateur<br>
+        Ancien élève (promo 1979–1985) · Ancien directeur pédagogique (1994–1998) · Ancien directeur général (2000–2002)</p>
+        <p class="letter-date">Rome, 22 avril 2026</p>
+      </div>
+    </div>
+
+    <div id="letter-body-container" class="letter-collapsed">
+      <div class="letter-body">
+        <p class="salutation">Chers anciens élèves,<br>Chers membres de la grande famille du Collège Immaculée-Conception (CIC),</p>
+
+        <p>C'est en ma triple qualité d'ancien élève (promotion 1979–1985), d'ancien directeur pédagogique (1994–1998) et d'ancien directeur général (2000–2002) que je m'adresse à vous. Fort de mon expérience de Supérieur provincial des Clercs de Saint-Viateur du Canada (2014–2024) et aujourd'hui investi de la charge de Supérieur général des Clercs de Saint-Viateur depuis juillet 2024, je tiens à partager avec vous cette réflexion alors que nous célébrons une étape charnière de notre histoire.</p>
+
+        <p>Cette année marque en effet le <strong>60e anniversaire de notre Alma mater</strong>, ce Collège qui nous est si cher, fondé en 1966 par le regretté Père Louis Cinéus.</p>
+
+        <div class="highlight-para">
+          En dépit de tous les succès remportés et de l'immense prestige que le CIC représente tant sur le plan national qu'international, nous devons affronter une réalité douloureuse : le visage actuel de notre Collège ne correspond plus à ses exploits passés ni à la haute qualité de l'éducation qui y est dispensée sans relâche depuis 60 ans.
+        </div>
+
+        <p>Il est triste de vous avouer qu'il ne subsiste aujourd'hui aucune archive de ce passé glorieux. Tout notre patrimoine documentaire a été emporté, soit par la fureur des ouragans, soit par les saccages successifs dont notre école a été la victime malheureuse depuis le début des années 2000.</p>
+
+        <p>Face à ces épreuves, la résilience a été portée par des mains fraternelles. Félicitations à l'AACIC de New York. Félicitations aux anciens de Floride à travers l'OACIC. Félicitations à tous ceux qui ont gardé dans leur mémoire et dans leur cœur les valeurs reçues au collège, quelle que soit la durée de leur passage. Car nous le savons : <em>CICéen, une journée ! CICéen toujours !</em></p>
+
+        <div class="highlight-para">
+          Aujourd'hui, je vous soumets une proposition qui émane à la fois de l'ancien élève, de l'ancien directeur et du Supérieur général des Clercs de Saint-Viateur : j'appelle à un ralliement de tous autour d'un projet fédérateur — la <strong>FAECIC</strong> (Fondation des Anciens Élèves du Collège Immaculée-Conception).
+        </div>
+
+        <p>M'inspirant de la Fondation des anciens de St-Louis de Gonzague (FASLG), j'ai élaboré un projet de statut et de règlement intérieur pour la FAECIC. Ce document sera discuté et adopté lors d'un congrès (en ligne) réunissant tous les anciens du CIC qui souhaitent s'impliquer.</p>
+
+        <p>Malgré le peu de temps dont je dispose et ma résidence actuelle en Europe, je prends l'engagement d'aider à la reconstitution des archives du CIC dans la mesure de mes capacités. Je consulterai les archives de la Congrégation au Canada lors de mon prochain séjour. Je ferai également appel à des personnes clés de différentes générations, tant en Haïti qu'à l'étranger.</p>
+
+        <p>Je souhaite ardemment que le lancement de la Fondation se concrétise au cours de cette année du 60e anniversaire. Que cet événement constitue un moment fort de notre célébration et le point de relance de notre unité.</p>
+
+        <div class="letter-closing">
+          <p>C'est, à mon avis, la seule et unique manière de regarder l'avenir avec sérénité et de recoller les morceaux de notre histoire qui sont, en ce moment, effrités.</p>
+          <p class="letter-signature">P. Nestor Fils-Aimé, c.s.v.<br>Supérieur général des Clercs de Saint-Viateur<br>Rome, 22 avril 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="letter-expand-btn" id="expand-btn" onclick="expandLetter()">
+        <span id="expand-label">Lire la lettre complète</span>
+        <svg id="expand-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / LA FONDATION -->
+<section id="mission">
+  <div class="section-container">
+    <p class="section-eyebrow" style="color:rgba(255,255,255,0.4);">La Fondation</p>
+    <h2 class="section-title" style="color:#fff;">
+      Ce que nous<br>construisons ensemble
+    </h2>
+
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-icon sky">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h4>Archives &amp; Mémoire</h4>
+        <p>Reconstituer les archives perdues du CIC — promotions, photographies, documents fondateurs. La mémoire d'une institution, c'est son âme.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon gold">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h4>Bourses &amp; Excellence</h4>
+        <p>Financer les jeunes générations de CICéens à travers des bourses d'excellence. L'éducation reçue, nous la retournons.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon emerald">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D7D6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Communauté Mondiale</h4>
+        <p>Relier les anciens de Gonaïves à Paris, de Miami à Montréal. Chapitres régionaux, annuaire mondial, événements intergénérationnels.</p>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- FORMULAIRE / REJOINDRE -->
+<section id="rejoindre" style="display:none;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">Rejoindre le mouvement</p>
+    <h2 class="section-title reveal">
+      Votre place dans<br>ce <strong>ralliement</strong>
+    </h2>
+  </div>
+
+  <div class="form-container" style="max-width:960px; margin-top:3.5rem;">
+    <div class="form-intro reveal">
+      <p>Le P. Nestor et l'équipe fondatrice organisent des rencontres en ligne pour discuter de l'avenir de la FAECIC. Quelle que soit votre génération, votre pays ou votre degré d'implication souhaité — votre voix compte.</p>
+      <p>Vous pouvez vous inscrire en tant que <strong>leader fondateur</strong>, <strong>membre actif</strong>, <strong>bienfaiteur</strong> ou simplement pour <strong>rester informé</strong>.</p>
+
+      <div class="form-roles">
+        <div class="role-tag"><div class="role-dot sky"></div><span><strong>Leader fondateur</strong> — Participer à l'Assemblée constituante et aux décisions fondatrices</span></div>
+        <div class="role-tag"><div class="role-dot gold"></div><span><strong>Membre actif</strong> — Rejoindre la communauté, voter, s'impliquer dans les chapitres</span></div>
+        <div class="role-tag"><div class="role-dot emerald"></div><span><strong>Bienfaiteur</strong> — Soutenir financièrement la Fondation et ses programmes</span></div>
+      </div>
+
+      <div style="margin-top:2.5rem; padding:1.5rem; background:var(--cream); border-radius:4px;">
+        <p style="font-size:13px; color:var(--warm-gray); line-height:1.65; margin:0;">
+          <strong style="color:var(--navy);">Prochaine étape :</strong> Une réunion en ligne avec le P. Nestor Fils-Aimé sera organisée pour tous les inscrits. Vous recevrez les informations de connexion par courriel après votre inscription.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <h3>Inscrire ma participation</h3>
+      <p class="form-card-sub">Remplissez ce formulaire pour rejoindre le ralliement. Toutes les informations restent confidentielles.</p>
+
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-field">
+          <label for="name">Prénom &amp; Nom</label>
+          <input type="text" id="name" name="name" placeholder="Jean-Pierre Dupont" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Adresse courriel</label>
+          <input type="email" id="email" name="email" placeholder="exemple@courriel.com" required>
+        </div>
+        <div class="form-field">
+          <label for="country">Pays de résidence</label>
+          <select id="country" name="country" required>
+            <option value="">Sélectionner un pays…</option>
+            <option value="Haiti">Haïti</option>
+            <option value="USA">États-Unis</option>
+            <option value="Canada">Canada</option>
+            <option value="France">France</option>
+            <option value="Other">Autre</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="graduation">Promotion (année de sortie approx.)</label>
+          <input type="text" id="graduation" name="graduation" placeholder="Ex : 1998, 2005, 2018…">
+        </div>
+        <div class="form-field">
+          <label for="role">Je souhaite m'impliquer comme…</label>
+          <select id="role" name="role" required>
+            <option value="">Choisir un rôle…</option>
+            <option value="Fondateur">Leader fondateur</option>
+            <option value="Actif">Membre actif</option>
+            <option value="Bienfaiteur">Bienfaiteur</option>
+            <option value="Informé">Rester informé pour l'instant</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Message (facultatif)</label>
+          <textarea id="message" name="message" placeholder="Un souvenir du CIC, une question, une idée…"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Envoyer mon inscription ↗</button>
+      </form>
+
+      <p style="margin-top:1.5rem; font-size:11px; color:rgba(255,255,255,0.35); text-align:center; line-height:1.6;">
+        <strong style="color:rgba(255,255,255,0.5);">Configuration Formspree :</strong><br>
+        Remplacez <code style="background:rgba(0,0,0,0.2); padding:2px 6px; border-radius:2px;">YOUR_FORM_ID</code> dans l'attribut <code style="background:rgba(0,0,0,0.2); padding:2px 6px; border-radius:2px;">action</code> du formulaire par votre identifiant Formspree (créez un formulaire sur <a href="https://formspree.io" target="_blank" style="color:rgba(212,175,55,0.8);">formspree.io</a> pour obtenir l'endpoint).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STATUTS -->
+<section id="statuts">
+  <div class="section-container">
+    <div class="statuts-content">
+      <div class="statuts-doc-preview reveal">
+        <div class="doc-header">
+          <div class="doc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="doc-title-block">
+            <h4>Statuts &amp; Règlement intérieur</h4>
+            <p>FAECIC · Version adoptée 2026</p>
+          </div>
+        </div>
+        <div class="doc-sections">
+          <div class="doc-section-row">
+            <span class="doc-section-num">I</span>
+            <span class="doc-section-label">Constitution, Dénomination &amp; Siège</span>
+          </div>
+          <div class="doc-section-row">
+            <span class="doc-section-num">II</span>
+            <span class="doc-section-label">Mission, Objet &amp; Moyens d'action</span>
+          </div>
+          <div class="doc-section-row">
+            <span class="doc-section-num">III</span>
+            <span class="doc-section-label">Composition &amp; Qualité des membres</span>
+          </div>
+          <div class="doc-section-row">
+            <span class="doc-section-num">IV</span>
+            <span class="doc-section-label">Administration &amp; Gouvernance</span>
+          </div>
+          <div class="doc-section-row">
+            <span class="doc-section-num">V</span>
+            <span class="doc-section-label">Dotation &amp; Ressources financières</span>
+          </div>
+          <div class="doc-section-row">
+            <span class="doc-section-num">VI</span>
+            <span class="doc-section-label">Dissolution &amp; Liquidation</span>
+          </div>
+        </div>
+        <div class="doc-action" style="display:none;">
+          <a href="#" class="doc-download">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger les statuts
+          </a>
+        </div>
+      </div>
+
+      <div class="statuts-text reveal">
+        <p class="section-eyebrow">Document officiel</p>
+        <h2 class="section-title">Les statuts<br>de la <strong>FAECIC</strong></h2>
+        <p style="font-size:15px; line-height:1.75; color:#3a4a60; margin-bottom:2rem;">
+          Adoptés en assemblée constituante en 2026, les statuts de la FAECIC définissent une fondation apolitique, non confessionnelle et sans but lucratif, régie par les lois haïtiennes. Explorez les chapitres ci-dessous.
+        </p>
+
+        <div class="accordion" id="statutes-accordion">
+          <!-- Chapitre I -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">I</span>
+                <h4>Constitution, Dénomination et Siège</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 1 — Constitution et Nature Juridique</span>
+                Il est institué entre les signataires des présents statuts et tous ceux qui y adhéreront ultérieurement, une organisation apolitique, non confessionnelle et sans but lucratif. Elle jouit de la personnalité civile et d'une autonomie de gestion complète, régie par les lois haïtiennes relatives aux fondations.</p>
+                
+                <p><span class="statute-section-label">Article 2 — Dénomination et Acronyme</span>
+                L'organisation est officiellement dénommée « Fondation des Anciens Élèves du Collège Immaculée-Conception », désignée par l'acronyme FAECIC.</p>
+                
+                <p><span class="statute-section-label">Article 3 — Siège Social et Expansion Territoriale</span>
+                Le siège social de la FAECIC est établi aux Gonaïves, Haïti. Sur décision motivée du Conseil d'Administration (CA), la Fondation a la faculté d'établir des bureaux de liaison, des centres annexes ou des représentations (« Chapitres ») en tout point du territoire national ou à l'étranger (Diaspora), afin de maintenir la proximité avec ses membres.
+                <br><br>
+                Dans un esprit de rassemblement et de cohésion, la Fondation encourage l'affiliation des organisations partenaires. En devenant parties intégrantes de la FAECIC, ces entités contribuent à l'unification du corps des anciens élèves, assurant ainsi une représentation fidèle et puissante de toutes les forces vives issues du Collège.</p>
+                
+                <p><span class="statute-section-label">Article 4 — Durée</span>
+                La durée de la Fondation est illimitée, afin de garantir un soutien intergénérationnel au Collège.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre II -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">II</span>
+                <h4>Mission, Objet et Moyens d'Action</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 5 — Mission Fondamentale</span>
+                La mission de la FAECIC est de constituer une force d'appui stratégique pour le CIC, favorisant le rayonnement de l'institution et le bien-être de sa communauté.</p>
+                
+                <p><span class="statute-section-label">Article 6 — Objectifs Spécifiques</span></p>
+                <ul>
+                  <li><strong>Cohésion Sociale et Fraternité :</strong> Créer et entretenir des réseaux de solidarité entre les promotions pour fortifier les liens de camaraderie.</li>
+                  <li><strong>Soutien Institutionnel :</strong> Apporter une assistance technique, matérielle ou financière au Collège pour l'amélioration des infrastructures et de la pédagogie.</li>
+                  <li><strong>Engagement Communautaire et Social :</strong> Initier des œuvres de bienfaisance aux Gonaïves et en Haïti (cliniques, bourses d'excellence, centres de recherche, laboratoires et projets culturels).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre III -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">III</span>
+                <h4>Composition et Qualité des Membres</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 7 — Les Catégories de Membres</span></p>
+                <ul>
+                  <li><strong>Membres Ordinaires :</strong> Tout ancien élève ayant fréquenté le CIC. Ils sont les seuls à posséder le droit de vote délibératif et l'éligibilité aux instances dirigeantes.</li>
+                  <li><strong>Membres Bienfaiteurs :</strong> Personnes physiques ou morales contribuant significativement aux ressources de la Fondation par des dons exceptionnels.</li>
+                  <li><strong>Membres d'Honneur :</strong> Titre honorifique décerné par le CA à des personnalités (anciens professeurs, directeurs ou citoyens) ayant rendu des services signalés à l'éducation ou à la Fondation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre IV -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">IV</span>
+                <h4>Administration et Gouvernance</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 8 — Le Conseil d'Administration (CA)</span>
+                Organe exécutif et de gestion, composé de neuf (9) membres élus :</p>
+                <ul>
+                  <li>1 Président, 2 Vice-Présidents, 1 Secrétaire Général, 1 Secrétaire Adjoint, 1 Trésorier, 1 Trésorier Adjoint et 2 Conseillers</li>
+                  <li>Le mandat est de deux (2) ans, renouvelable selon les conditions du règlement intérieur</li>
+                </ul>
+                
+                <p><span class="statute-section-label">Article 9 — Le Conseil des Représentants (CR)</span>
+                Organe de délibération, d'orientation et de surveillance. Il est composé de 57 membres :</p>
+                <ul>
+                  <li>54 délégués mandatés par les promotions successives (à raison d'un par promotion)</li>
+                  <li>3 délégués de la Direction du Collège, garantissant l'alignement avec la mission éducative</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre V -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">V</span>
+                <h4>Dotation et Ressources Financières</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 10 — Fonds de Dotation Initial</span>
+                Pour marquer le 60e anniversaire, la dotation initiale est fixée à 1 500 000,00 Gourdes, provenant des Clercs de Saint-Viateur et des membres fondateurs. Ce capital est destiné à garantir la solvabilité des premiers grands projets.</p>
+                
+                <p><span class="statute-section-label">Article 11 — Ressources Annuelles</span>
+                Les revenus incluent les cotisations, subventions, dons, legs, revenus de placements et produits d'événements de collecte de fonds (galas, concerts, etc.).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre VI -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">VI</span>
+                <h4>Dissolution et Liquidation</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Article 12 — Dévolution des Biens</span>
+                En cas de dissolution volontaire ou légale, l'intégralité de l'actif net, après apurement du passif, est irrévocablement transférée à la Direction du Collège Immaculée-Conception.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Règlement Intérieur -->
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="accordion-header-left">
+                <span class="accordion-num">RI</span>
+                <h4>Règlement Intérieur</h4>
+              </div>
+              <div class="accordion-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p><span class="statute-section-label">Chapitre I — Éthique et Code de Conduite</span>
+                Chaque membre s'engage à agir avec dignité, reflétant l'excellence de son éducation. Toute forme de harcèlement, de discrimination ou d'utilisation de la Fondation à des fins politiques partisanes est strictement interdite.</p>
+
+                <p><span class="statute-section-label">Chapitre II — Fonctionnement des Instances</span>
+                Le CA se réunit de manière ordinaire selon une fréquence trimestrielle. Les délibérations ne sont valables que si la majorité (5 membres) est présente. En cas d'urgence, des séances extraordinaires peuvent être convoquées par le Président.</p>
+
+                <p><span class="statute-section-label">Chapitre III — Système Électoral</span>
+                Les élections se tiennent impérativement au mois de décembre précédant la fin du mandat. La passation de pouvoir s'effectue le premier jour ouvrable de janvier. Seuls les Membres Ordinaires à jour de leurs obligations financières peuvent postuler aux fonctions électives.</p>
+
+                <p><span class="statute-section-label">Chapitre IV — Cotisations</span>
+                Les cotisations sont annuelles. Un tarif préférentiel (« Forfait Jeune Alumni ») est accordé aux diplômés des cinq dernières promotions afin de faciliter leur insertion dans la Fondation dès leur sortie du Collège.</p>
+
+                <p><span class="statute-section-label">Chapitre V — Rapports et Transparence</span>
+                Le Trésorier est tenu de présenter un rapport financier détaillé lors de chaque réunion du Conseil des Représentants. Les comptes sont soumis à un audit annuel si nécessaire.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark">
+    <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+      <circle cx="30" cy="30" r="6" fill="#D4AF37"/>
+      <line x1="5" y1="5" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="55" y1="5" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="5" y1="55" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="55" y1="55" x2="30" y2="30" stroke="#1E90FF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="30" y1="3" x2="30" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <line x1="30" y1="57" x2="30" y2="30" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <span style="font-family:var(--font-body); font-weight:600; letter-spacing:0.14em; color:#fff; font-size:16px;">FAECIC</span>
+  </div>
+
+  <p class="footer-rally">« CICéen, une journée ! CICéen toujours ! »</p>
+  <p class="footer-motto">Fondation des Anciens Élèves du Collège Immaculée-Conception · Gonaïves, Haïti</p>
+
+  <div class="footer-links">
+    <a href="#ralliement">Le Ralliement</a>
+    <a href="#lettre">Lettre fondatrice</a>
+    <a href="#mission">La Fondation</a>
+    <a href="#statuts">Statuts</a>
+    <a href="#rejoindre">Rejoindre</a>
+  </div>
+
+  <p class="footer-bottom">© 2026 FAECIC — Fondation des Anciens Élèves du Collège Immaculée-Conception. Siège social : Gonaïves, Haïti.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Accordion toggle
+  function toggleAccordion(header) {
+    const item = header.closest('.accordion-item');
+    const isExpanded = item.classList.contains('expanded');
+    
+    // Close all other items
+    document.querySelectorAll('.accordion-item').forEach(i => {
+      i.classList.remove('expanded');
+    });
+    
+    // Toggle current item
+    if (!isExpanded) {
+      item.classList.add('expanded');
+    }
+  }
+
+  // Letter expand
+  let expanded = false;
+  function expandLetter() {
+    const container = document.getElementById('letter-body-container');
+    const label = document.getElementById('expand-label');
+    const icon = document.getElementById('expand-icon');
+    expanded = !expanded;
+    if (expanded) {
+      container.classList.remove('letter-collapsed');
+      label.textContent = 'Réduire la lettre';
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      container.classList.add('letter-collapsed');
+      label.textContent = 'Lire la lettre complète';
+      icon.style.transform = '';
+      document.getElementById('lettre').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+
+</body>
+</html>
