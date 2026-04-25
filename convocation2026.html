@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Congrès de Création — F.A.E.C.I.C. 2026</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #1E90FF;
+    --sky-dark: #0E7FDB;
+    --navy: #0A1E3F;
+    --navy-mid: #1a3460;
+    --warm-white: #FAFAF8;
+    --cream: #F5F1E8;
+    --gold: #D4AF37;
+    --warm-gray: #7A7A7A;
+    --emerald: #2D7D6E;
+    --rust: #B85C4F;
+    --coral: #F4A896;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--navy); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,30,63,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+  .nav-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-mark svg { width: 36px; height: 36px; }
+  .nav-mark-label { font-family: var(--font-body); font-weight: 600; font-size: 15px; letter-spacing: 0.12em; color: #fff; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--sky); color: #fff !important; padding: 8px 20px; border-radius: 4px; font-weight: 600 !important; letter-spacing: 0.04em; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--sky-dark) !important; color: #fff !important; }
+
+  /* BUTTON STYLES */
+  .btn-primary {
+    background: var(--sky);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sky-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+  .btn-outline-dark {
+    background: transparent;
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline-dark:hover { background: var(--navy); color: #fff; }
+
+  /* SECTION STYLES */
+  .section-container { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); margin-bottom: 1.2rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 300; line-height: 1.1; color: var(--navy); margin-bottom: 1.5rem; }
+  .section-title strong { font-weight: 600; }
+
+  /* HERO SECTION */
+  #hero {
+    background: var(--navy);
+    padding: 140px 2rem 80px;
+    color: #fff;
+    text-align: center;
+  }
+  .hero-content { max-width: 900px; margin: 0 auto; }
+  .hero-content .section-eyebrow { color: var(--gold); }
+  .hero-content .section-title { color: #fff; }
+
+  /* CONGRESS EVENT DETAILS */
+  .event-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 3rem auto 2.5rem;
+    max-width: 900px;
+  }
+  .event-detail-card {
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .event-detail-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.75rem;
+  }
+  .event-detail-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .event-detail-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* LETTER / CARD SECTIONS */
+  .letter-wrapper { max-width: 820px; margin: 0 auto; }
+  .letter-card { background: #fff; border-radius: 8px; padding: 3rem; box-shadow: 0 4px 16px rgba(10,30,63,0.08); }
+  .letter-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(10,30,63,0.12);
+  }
+  .letter-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--navy);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .letter-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .letter-author-info h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .letter-author-info p {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  .letter-author-info p:last-child { margin-bottom: 0; }
+  .letter-author-info .letter-date {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--sky);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .letter-content { font-size: 15px; line-height: 1.8; color: #2a3a55; margin-bottom: 1.5rem; }
+  .letter-content p { margin-bottom: 1.5rem; }
+  .letter-content p:last-child { margin-bottom: 0; }
+  .letter-content strong { font-weight: 600; }
+
+  /* PREPARATION SECTION */
+  .prep-items { margin-top: 2.5rem; }
+  .prep-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--sky);
+  }
+  .prep-item h4 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .prep-item ol {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+  }
+  .prep-item li {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+  }
+  .prep-item a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .prep-item a:hover { text-decoration: underline; }
+
+  /* REFLECTION CARDS */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .reflection-card {
+    background: var(--cream);
+    border-left: 4px solid;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+  .reflection-card:nth-child(1) { border-left-color: var(--sky); }
+  .reflection-card:nth-child(2) { border-left-color: var(--gold); }
+  .reflection-card:nth-child(3) { border-left-color: var(--emerald); }
+  .reflection-card:nth-child(4) { border-left-color: var(--sky); }
+  .reflection-card:nth-child(5) { border-left-color: var(--gold); }
+  .reflection-card:nth-child(6) { border-left-color: var(--emerald); }
+  .reflection-card strong { display: block; margin-bottom: 0.5rem; color: var(--navy); font-size: 15px; }
+  .reflection-card p { font-size: 14px; line-height: 1.7; color: #3a4a55; }
+
+  /* AGENDA */
+  .agenda-list { margin-top: 2.5rem; }
+  .agenda-item {
+    background: #fff;
+    border-left: 4px solid var(--navy);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .agenda-item.highlight {
+    border-left-color: var(--gold);
+    background: rgba(212,175,55,0.05);
+    font-weight: 600;
+  }
+  .agenda-num {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--sky);
+    margin-right: 0.75rem;
+    display: inline-block;
+    min-width: 32px;
+  }
+  .agenda-item.highlight .agenda-num { color: var(--gold); }
+  .agenda-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #2a3a55;
+  }
+  .agenda-item.highlight .agenda-text { color: var(--navy); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 60px 2rem 32px;
+    text-align: center;
+    border-top: 1px solid rgba(212,175,55,0.2);
+  }
+  .footer-mark { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 1.5rem; }
+  .footer-mark img { border-radius: 50%; object-fit: cover; }
+  .footer-rally { font-family: var(--font-display); font-size: 22px; font-style: italic; font-weight: 400; color: var(--gold); margin-bottom: 0.5rem; }
+  .footer-motto { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 2.5rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { font-size: 12px; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .event-details-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .reflection-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 32px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-mark" href="index.html#hero">
+    <span class="nav-mark-label">F.A.E.C.I.C.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#congres">Congrès 2026</a></li>
+    <li><a href="index.html#lettre">Lettre Fondatrice</a></li>
+    <li><a href="index.html#gratitude">Gratitude & Témoignages</a></li>
+    <li><a href="index.html#mission">La Mission</a></li>
+    <li><a href="index.html#statuts">Statuts</a></li>
+    <li><a href="index.html#reglement">Règlement Intérieur</a></li>
+    <li><a href="https://forms.gle/8oYMGCNoAzX4rpiY6" class="nav-cta" target="_blank">S'inscrire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO / CONGRESS DETAILS -->
+<section id="hero" style="padding-top: 120px;">
+  <div class="hero-content">
+    <p class="section-eyebrow reveal">Fondation des Anciens Élèves du Collège Immaculée-Conception</p>
+    <h1 class="section-title reveal">Congrès de <strong>création</strong></h1>
+
+    <div class="event-details-grid reveal">
+      <div class="event-detail-card">
+        <div class="event-detail-label">Date</div>
+        <div class="event-detail-value">Samedi 2 mai</div>
+        <div class="event-detail-sub">2026</div>
+      </div>
+      <div class="event-detail-card">
+        <div class="event-detail-label">Heure</div>
+        <div class="event-detail-value">19h – 21h</div>
+        <div class="event-detail-sub">Heure d'Haïti (EDT)</div>
+      </div>
+      <div class="event-detail-card">
+        <div class="event-detail-label">Format</div>
+        <div class="event-detail-value">En ligne</div>
+        <div class="event-detail-sub">Zoom</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+      <a href="#lettre-section" class="btn-primary">Lettre de Convocation</a>
+      <a href="#prep-section" class="btn-primary">Avant le Congrès</a>
+      <a href="#agenda-section" class="btn-primary">Ordre du Jour</a>
+      <a href="https://us02web.zoom.us/j/86341641716?pwd=aGb2tMlCthebqBPdAzR5GFdBUypuSV.1" target="_blank" class="btn-primary">Rejoindre via Zoom</a>
+      <a href="index.html#congres" class="btn-outline">← Retour à l'accueil</a>
+    </div>
+  </div>
+</section>
+
+<!-- LETTRE DE CONVOCATION -->
+<section style="background: var(--warm-white); padding: 100px 2rem;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">LETTRE DE CONVOCATION</p>
+    <h2 class="section-title reveal">Un appel à la <strong>famille CICéenne</strong></h2>
+
+    <div class="letter-wrapper" style="margin-top: 3rem;">
+      <div id="lettre-section" class="letter-card reveal">
+        <div class="letter-header">
+          <div class="letter-avatar">
+            <img src="https://csviator-intl.org/wp-content/uploads/2024/11/Pere-Nestor-Fils-Aime-1280x1583.jpg" alt="P. Nestor Fils-Aimé" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="letter-author-info">
+            <h3>P. Nestor Fils-Aimé, c.s.v.</h3>
+            <p>Supérieur général des Clercs de Saint-Viateur<br>
+            Ancien élève (promo 1979–1985) · Ancien directeur pédagogique (1994–1998) · Ancien directeur général (2000–2002)</p>
+            <p class="letter-date">Rome, 22 avril 2026</p>
+          </div>
+        </div>
+        <div class="letter-content">
+          <p><strong>Chers frères et sœurs, anciens et anciennes du Collège Immaculée-Conception</strong></p>
+
+          <p>Nous franchissons aujourd'hui une étape décisive dans notre volonté de nous rassembler. L'enthousiasme manifesté sur notre groupe WhatsApp, initié par Beracka Innocent que nous remercions chaleureusement, prouve qu'un ciment indéfectible nous lie. Notre esprit d'appartenance au CIC est plus fort que jamais.</p>
+
+          <p>Cependant, malgré tout, un constat s'impose : l'absence des plus jeunes alumni. Pour que notre projet soit représentatif, nous devons rejoindre toutes les promotions.</p>
+
+          <p>Notre grande famille compte jusqu'ici <strong>54 promotions</strong>. Le calcul et la numérotation des promotions sont liés à la structure du cursus scolaire. Comme vous le savez, le cycle d'études complet s'étalait sur une période de six ans, débutant en classe de Sixième pour s'achever en classe de Rhétorique. Avec l'ouverture de la classe de Philosophie (Philo) en 1996, la durée totale du parcours académique a été portée à sept ans.</p>
+
+          <p style="margin-bottom: 1.25rem;"><strong>Ainsi :</strong></p>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+            <li>De 1972 à 1996: Cycle de 6 ans (6ème à la Rhéto) : <strong>25 promotions</strong></li>
+            <li>De 1997 à 2025: Cycle de 7 ans (7e A.F. à la Terminale) : <strong>29 promotions</strong></li>
+          </ul>
+
+          <p>Il est temps de donner un cadre officiel à notre solidarité. J'ai le plaisir de vous convoquer au <strong>Congrès de création de la Fondation des Anciens Élèves du Collège Immaculée-Conception (F.A.E.C.I.C.)</strong>, le <strong>samedi 2 mai 2026, de 19h à 21h (Heure d'Haïti)</strong>.</p>
+
+          <p style="margin-top: 2rem;">Voici le lien Zoom qui vous permettra de vous joindre à nous :</p>
+          <p style="margin-top: 1rem;">
+            <a href="https://us02web.zoom.us/j/86341641716?pwd=aGb2tMlCthebqBPdAzR5GFdBUypuSV.1" target="_blank" class="btn-primary">Rejoindre le Congrès</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT SE PRÉPARER -->
+<section id="prep-section" style="background: var(--cream); padding: 100px 2rem;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">AVANT LE CONGRÈS</p>
+    <h2 class="section-title reveal">Comment se <strong>préparer</strong></h2>
+
+    <div class="letter-wrapper">
+      <div class="prep-items">
+        <div class="prep-item reveal">
+          <h4>Préparez-vous</h4>
+          <p>L'ordre du jour est chargé. Pour garantir l'efficacité de nos échanges, nous vous demandons d'arriver préparés en ayant lu les <a href="index.html#statuts">Statuts</a> et le <a href="index.html#reglement">Règlement intérieur</a>.</p>
+        </div>
+
+        <div class="prep-item reveal">
+          <h4>Partagez vos idées</h4>
+          <p>De nous envoyer, si possible, vos questions et suggestions à l'avance pour optimiser notre temps ensemble.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 2rem;" class="reveal">Pistes de réflexion avant le Congrès</h3>
+        <p style="font-size: 15px; line-height: 1.8; color: #2a3a55; margin-bottom: 2rem;" class="reveal">En vue du Congrès, nous vous invitons à réfléchir aux points suivants :</p>
+
+        <div class="reflection-grid reveal">
+          <div class="reflection-card">
+            <strong>Le 60e anniversaire</strong>
+            <p>Le 8 décembre étant un mercredi, pourrions-nous envisager un programme du 10 au 12 décembre, à l'instar du 30e anniversaire en 1996 ?</p>
+          </div>
+          <div class="reflection-card">
+            <strong>Logistique</strong>
+            <p>Comment agencer le présentiel et le virtuel ? Quelle plateforme utiliser ?</p>
+          </div>
+          <div class="reflection-card">
+            <strong>Cotisations</strong>
+            <p>Quel mode de calcul et quel procédé (par promotion ou individuel) ?</p>
+          </div>
+          <div class="reflection-card">
+            <strong>Structure</strong>
+            <p>Comment articuler les relations entre Haïti et la Diaspora ? Faut-il créer des Chapitres (Haïti, USA, Canada, Europe, etc.) ?</p>
+          </div>
+          <div class="reflection-card">
+            <strong>Gouvernance</strong>
+            <p>Quelle répartition des rôles au Conseil d'Administration (CA) entre membres sur place et diaspora ? Faut-il augmenter le nombre de sièges au CA ?</p>
+          </div>
+          <div class="reflection-card">
+            <strong>Distinctions</strong>
+            <p>Quels membres d'honneur désigner ?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDRE DU JOUR -->
+<section id="agenda-section" style="background: var(--warm-white); padding: 100px 2rem;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">PROGRAMME</p>
+    <h2 class="section-title reveal">Ordre du <strong>jour</strong></h2>
+
+    <div class="letter-wrapper">
+      <div class="agenda-list reveal">
+        <div class="agenda-item">
+          <span class="agenda-num">1</span>
+          <span class="agenda-text">Temps de recueillement</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">2</span>
+          <span class="agenda-text">Salutations et mot de bienvenue</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">3</span>
+          <span class="agenda-text">Désignation d'un/e secrétaire ad hoc</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">4</span>
+          <span class="agenda-text">Présentation des objectifs de la rencontre : Rassembler la grande famille CICéenne en cette année du 60e anniversaire du Collège et mise sur pied de la F.A.E.C.I.C.</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">5</span>
+          <span class="agenda-text">Temps d'échanges sur les deux thématiques : 60e et Fondation</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">6</span>
+          <span class="agenda-text">Création d'un Comité du 60e en accord avec la Direction du Collège : Modalités de désignation des membres, Calendrier de travail</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">7</span>
+          <span class="agenda-text">Études des statuts et du règlement intérieur de la F.A.E.C.I.C.</span>
+        </div>
+        <div class="agenda-item highlight">
+          <span class="agenda-num">8</span>
+          <span class="agenda-text">VOTE d'approbation et signature de l'acte constitutif</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">9</span>
+          <span class="agenda-text">Calendrier des prochaines étapes</span>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-num">10</span>
+          <span class="agenda-text">Évaluation de la réunion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark">
+    <img src="faecic_logo_042426.jpeg" alt="F.A.E.C.I.C. Logo" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+  </div>
+
+  <p class="footer-rally">« CICéen, une journée ! CICéen toujours ! »</p>
+  <p class="footer-motto">Fondation des Anciens Élèves du Collège Immaculée-Conception · Gonaïves, Haïti</p>
+
+  <div class="footer-links">
+    <a href="index.html#congres">Congrès 2026</a>
+    <a href="index.html#lettre">Lettre Fondatrice</a>
+    <a href="index.html#gratitude">Gratitude & Témoignages</a>
+    <a href="index.html#mission">La Mission</a>
+    <a href="index.html#statuts">Statuts</a>
+    <a href="index.html#reglement">Règlement Intérieur</a>
+    <a href="https://forms.gle/8oYMGCNoAzX4rpiY6" target="_blank">S'inscrire</a>
+  </div>
+
+  <p class="footer-bottom">© 2026 F.A.E.C.I.C. — Fondation des Anciens Élèves du Collège Immaculée-Conception. Siège social : Gonaïves, Haïti.</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveal animations
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealElements.forEach(element => observer.observe(element));
+</script>
+
+</body>
+</html>
