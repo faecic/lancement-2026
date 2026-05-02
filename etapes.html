@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendrier du Projet — F.A.E.C.I.C. 2026</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #1E90FF;
+    --sky-dark: #0E7FDB;
+    --navy: #0A1E3F;
+    --navy-mid: #1a3460;
+    --warm-white: #FAFAF8;
+    --cream: #F5F1E8;
+    --gold: #D4AF37;
+    --warm-gray: #7A7A7A;
+    --emerald: #2D7D6E;
+    --rust: #B85C4F;
+    --coral: #F4A896;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--navy); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,30,63,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+  .nav-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-mark-label { font-family: var(--font-body); font-weight: 600; font-size: 15px; letter-spacing: 0.12em; color: #fff; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* BUTTON STYLES */
+  .btn-primary {
+    background: var(--sky);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sky-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+  .btn-outline-dark {
+    background: transparent;
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline-dark:hover { background: var(--navy); color: #fff; }
+
+  /* SECTION STYLES */
+  .section-container { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); margin-bottom: 1.2rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 300; line-height: 1.1; color: var(--navy); margin-bottom: 1.5rem; }
+  .section-title strong { font-weight: 600; }
+
+  /* HERO SECTION */
+  #hero {
+    background: linear-gradient(135deg, rgba(10,30,63,0.85) 0%, rgba(26,52,96,0.85) 100%), url('lacour.jpeg') center / cover no-repeat;
+    padding: 140px 2rem 80px;
+    color: #fff;
+    text-align: center;
+  }
+  .hero-content { max-width: 900px; margin: 0 auto; }
+  .hero-content .section-eyebrow { color: var(--gold); }
+  .hero-content .section-title { color: #fff; }
+  .hero-subtitle { font-size: 18px; line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  /* TIMELINE */
+  .timeline-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .timeline-summary-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 16px 36px rgba(10,30,63,0.08);
+    border-left: 4px solid var(--sky);
+  }
+  .timeline-summary-card:nth-child(2) { border-left-color: var(--gold); }
+  .timeline-summary-card:nth-child(3) { border-left-color: var(--emerald); }
+  .timeline-summary-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 0.85rem;
+  }
+  .timeline-summary-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .timeline-summary-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .timeline-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .timeline-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 16px 36px rgba(10,30,63,0.09);
+    border: 1px solid rgba(10,30,63,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--sky), var(--gold), var(--emerald));
+  }
+  .timeline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+    background: rgba(30,144,255,0.1);
+    color: var(--sky);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .timeline-card-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+  }
+  .timeline-card-subtitle {
+    font-size: 14px;
+    color: var(--warm-gray);
+    margin-bottom: 1rem;
+  }
+  .timeline-card-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .timeline-card-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .timeline-card-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: #4a5568;
+  }
+  .timeline-card-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--sky);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* CTA SECTION */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .cta-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(10,30,63,0.08);
+    border-top: 4px solid;
+  }
+  .cta-card:nth-child(1) { border-top-color: var(--sky); }
+  .cta-card:nth-child(2) { border-top-color: var(--gold); }
+
+  .cta-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .cta-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  /* MILESTONE SECTION */
+  .milestone-container {
+    background: linear-gradient(135deg, rgba(30,144,255,0.05) 0%, rgba(212,175,55,0.05) 100%);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 3rem 0;
+  }
+  .milestone-number {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--sky);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .milestone-label {
+    font-size: 14px;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 60px 2rem 32px;
+    text-align: center;
+    border-top: 1px solid rgba(212,175,55,0.2);
+  }
+  .footer-mark { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 1.5rem; }
+  .footer-mark img { border-radius: 50%; object-fit: cover; }
+  .footer-rally { font-family: var(--font-display); font-size: 22px; font-style: italic; font-weight: 400; color: var(--gold); margin-bottom: 0.5rem; }
+  .footer-motto { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 2.5rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { font-size: 12px; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; }
+
+  /* ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .timeline-summary,
+    .timeline-cards { grid-template-columns: 1fr; }
+    .timeline-card { padding: 1.5rem; }
+    .timeline-badge { font-size: 11px; padding: 0.5rem 0.75rem; }
+    .cta-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 32px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-mark" href="index.html#hero">
+    <span class="nav-mark-label">F.A.E.C.I.C.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#timeline">Calendrier</a></li>
+    <li><a href="#action">S'impliquer</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero" style="padding-top: 120px;">
+  <div class="hero-content">
+    <p class="section-eyebrow reveal">Fondation des Anciens Élèves du Collège Immaculée-Conception</p>
+    <h1 class="section-title reveal">Notre voyage vers le <strong>60e anniversaire</strong></h1>
+    <p class="hero-subtitle reveal">Un calendrier des étapes qui façonnent notre avenir collectif</p>
+
+    <div class="milestone-container reveal" style="margin: 3rem auto 0; display: inline-block;">
+      <p style="font-size: 14px; color: rgba(255,255,255,0.9); margin-bottom: 1rem; letter-spacing: 0.05em;">ANNÉE PIVOT</p>
+      <p style="font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--gold); margin-bottom: 0.5rem;">2026</p>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.7);">Célébration • Création • Unité</p>
+    </div>
+
+    <div class="reveal" style="margin-top: 2.5rem;">
+      <a href="#timeline" class="btn-primary">Voir le calendrier</a>
+      <a href="index.html#congres" class="btn-outline" style="margin-left: 1rem;">← Retour à l'accueil</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section id="timeline" style="background: #fff; padding: 100px 2rem;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal" style="text-align: center;">CALENDRIER DU PROJET</p>
+    <h2 class="section-title reveal" style="text-align: center;">Les étapes de notre <strong>construction</strong></h2>
+    <p style="max-width: 760px; margin: 1.5rem auto 0; font-size: 15px; line-height: 1.8; color: #54607a; text-align: center;" class="reveal">
+      Un parcours clair et concret pour 2026 : des premiers pas de structuration jusqu'au grand lancement du 60e anniversaire.
+      Chaque période présente des actions ciblées pour faire avancer notre Fondation ensemble.
+    </p>
+
+    <div class="timeline-summary reveal">
+      <article class="timeline-summary-card">
+        <p class="timeline-summary-label">Phase 1</p>
+        <h3 class="timeline-summary-title">Base & Gouvernance</h3>
+        <p class="timeline-summary-text">Mai et juin : constituer les structures officielles, adopter les statuts, démarrer les adhésions et installer le Conseil d'Administration.</p>
+      </article>
+      <article class="timeline-summary-card">
+        <p class="timeline-summary-label">Phase 2</p>
+        <h3 class="timeline-summary-title">Cadre juridique & opérationnel</h3>
+        <p class="timeline-summary-text">Juillet et août : enregistrer la Fondation, formaliser les documents, et préparer le plan de lancement avec partenaires et financement.</p>
+      </article>
+      <article class="timeline-summary-card">
+        <p class="timeline-summary-label">Phase 3</p>
+        <h3 class="timeline-summary-title">Mobilisation & lancement</h3>
+        <p class="timeline-summary-text">Septembre à décembre : activer les campagnes, mobiliser les anciens, et célébrer la naissance de la FAECIC au 60e anniversaire.</p>
+      </article>
+    </div>
+
+    <div class="timeline-cards">
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Mai 2026</span>
+        <h3 class="timeline-card-title">Structuration & adhésion</h3>
+        <p class="timeline-card-subtitle">Poser les bases de la Fondation et rassembler les premiers membres.</p>
+        <ul class="timeline-card-list">
+          <li>Adoption des statuts</li>
+          <li>Signature de l'acte constitutif</li>
+          <li>Définir rôles et responsabilités du Conseil d'Administration</li>
+          <li>Finaliser les Règlements Internes</li>
+          <li>Élaborer un calendrier précis des activités</li>
+          <li>Lancer les inscriptions des membres</li>
+        </ul>
+      </article>
+
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Juin 2026</span>
+        <h3 class="timeline-card-title">Gouvernance</h3>
+        <p class="timeline-card-subtitle">Construire les instances qui dirigent et veillent à la réussite du projet.</p>
+        <ul class="timeline-card-list">
+          <li>Constituer le Conseil d'Administration</li>
+          <li>Constituer le Conseil des Représentants</li>
+          <li>Mettre en place le Conseil élu</li>
+        </ul>
+      </article>
+
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Juillet 2026</span>
+        <h3 class="timeline-card-title">Création juridique</h3>
+        <p class="timeline-card-subtitle">Ancrer la FAECIC dans le cadre légal haïtien.</p>
+        <ul class="timeline-card-list">
+          <li>Enregistrer la FAECIC auprès du Ministère des Affaires Sociales et du Travail</li>
+          <li>Publier au journal officiel Le Moniteur</li>
+          <li>Obtenir la patente auprès de la Direction Générale des Impôts</li>
+          <li>Ouvrir les comptes bancaires</li>
+        </ul>
+      </article>
+
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Août 2026</span>
+        <h3 class="timeline-card-title">Planification opérationnelle</h3>
+        <p class="timeline-card-subtitle">Préparer les activités, le financement et la communication autour du lancement.</p>
+        <ul class="timeline-card-list">
+          <li>Définir un calendrier opérationnel</li>
+          <li>Élaborer le programme de lancement</li>
+          <li>Identifier les partenaires clés</li>
+          <li>Établir la stratégie de financement</li>
+          <li>Créer le plan de communication</li>
+          <li>Mettre en place les outils de suivi</li>
+        </ul>
+      </article>
+
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Septembre–Octobre–Novembre 2026</span>
+        <h3 class="timeline-card-title">Développement</h3>
+        <p class="timeline-card-subtitle">Renforcer l'élan en mobilisant les membres et les partenaires.</p>
+        <ul class="timeline-card-list">
+          <li>Lancer les campagnes de financement</li>
+          <li>Mobiliser les anciens élèves et partenaires</li>
+        </ul>
+      </article>
+
+      <article class="timeline-card reveal">
+        <span class="timeline-badge">Décembre 2026</span>
+        <h3 class="timeline-card-title">Lancement</h3>
+        <p class="timeline-card-subtitle">Célébrer officiellement la nouvelle Fondation au 60e anniversaire.</p>
+        <p class="timeline-card-text">Annonce officielle lors des événements du 60e anniversaire du CIC.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section id="action" style="background: var(--cream); padding: 100px 2rem;">
+  <div class="section-container">
+    <p class="section-eyebrow reveal" style="text-align: center;">IMPLIQUEZ-VOUS</p>
+    <h2 class="section-title reveal" style="text-align: center;">Soyez acteur de cette <strong>histoire</strong></h2>
+
+    <div class="cta-grid">
+      <div class="cta-card reveal">
+        <p style="font-size: 32px; margin-bottom: 1rem;">🎯</p>
+        <h3>Partagez vos talents</h3>
+        <p>La F.A.E.C.I.C. se construit grâce à vous. Nous cherchons des bénévoles avec des compétences variées pour contribuer à la réalisation de nos objectifs.</p>
+        <a href="https://forms.gle/4RHyhdKdDdcitEqX6" target="_blank" class="btn-outline-dark">S'impliquer dans le projet</a>
+      </div>
+
+      <div class="cta-card reveal">
+        <p style="font-size: 32px; margin-bottom: 1rem;">⭐</p>
+        <h3>Rejoignez les fondateurs</h3>
+        <p>Devenez membre fondateur de la F.A.E.C.I.C. Votre nom sera inscrit parmi les piliers qui ont façonné le renouveau de notre Fondation.</p>
+        <a href="https://forms.gle/nZuVJ7DfpVaTVSon8" target="_blank" class="btn-outline-dark">S'enregistrer comme fondateur</a>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: 8px; padding: 3rem 2rem; text-align: center; margin-top: 3rem; color: #fff;" class="reveal">
+      <p style="font-family: var(--font-display); font-size: 24px; font-weight: 600; margin-bottom: 1rem;">Ce moment est crucial</p>
+      <p style="font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">
+        Nous écrivons ensemble l'histoire de la F.A.E.C.I.C. Que vous soyez en Haïti ou dans la diaspora, votre présence, vos idées et votre engagement sont indispensables. Joignez-vous à nous pour transformer cette année du 60e anniversaire en un tournant majeur de notre histoire collective.
+      </p>
+      <div style="margin-top: 2rem;">
+        <a href="index.html#congres" class="btn-primary">En savoir plus sur le Congrès</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark">
+    <img src="faecic_logo_042426.jpeg" alt="F.A.E.C.I.C. Logo" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+  </div>
+
+  <p class="footer-rally">« CICéen, une journée ! CICéen toujours ! »</p>
+  <p class="footer-motto">Fondation des Anciens Élèves du Collège Immaculée-Conception · Gonaïves, Haïti</p>
+
+  <div class="footer-links">
+    <a href="index.html#hero">Accueil</a>
+    <a href="index.html#congres">Congrès 2026</a>
+    <a href="index.html#lettre">Lettre Fondatrice</a>
+    <a href="index.html#mission">La Mission</a>
+    <a href="index.html#statuts">Statuts</a>
+    <a href="index.html#reglement">Règlement Intérieur</a>
+    <a href="#action">S'impliquer</a>
+  </div>
+
+  <p class="footer-bottom">© 2026 F.A.E.C.I.C. — Fondation des Anciens Élèves du Collège Immaculée-Conception. Siège social : Gonaïves, Haïti.</p>
+</footer>
+
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealElements.forEach(element => observer.observe(element));
+</script>
+
+</body>
+</html>
