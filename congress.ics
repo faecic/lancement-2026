@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//F.A.E.C.I.C.//Congrès de Création//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:F.A.E.C.I.C. - Congrès de Création
+X-WR-TIMEZONE:America/Port-au-Prince
+BEGIN:VEVENT
+UID:congress2026-s2@faecic.ht
+DTSTAMP:20260513T000000Z
+DTSTART:20260516T160000Z
+DTEND:20260516T180000Z
+SUMMARY:2e session — Congrès de Création de la F.A.E.C.I.C.
+DESCRIPTION:2e session du Congrès de création de la Fondation des Anciennes et Anciens Élèves du Collège Immaculée-Conception\n\nFormat: En ligne via Zoom\n\nLien Zoom: https://us02web.zoom.us/j/87415442432?pwd=a0cb1VOfUAuD0MeHPPG4lTybMarPDA.1\n\nHeure: 12h00 EDT (Heure d'Haïti)
+LOCATION:Zoom
+URL:https://us02web.zoom.us/j/87415442432?pwd=a0cb1VOfUAuD0MeHPPG4lTybMarPDA.1
+ORGANIZER:F.A.E.C.I.C.
+END:VEVENT
+END:VCALENDAR
