@@ -265,35 +265,59 @@
   .reflection-card p { font-size: 14px; line-height: 1.7; color: #3a4a55; }
 
   /* AGENDA */
-  .agenda-list { margin-top: 2.5rem; }
-  .agenda-item {
-    background: #fff;
-    border-left: 4px solid var(--navy);
-    padding: 1.75rem 2rem;
-    margin-bottom: 1rem;
-    border-radius: 0 4px 4px 0;
+  .agenda-list {
+    margin-top: 2.5rem;
+    position: relative;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .agenda-item.highlight {
-    border-left-color: var(--gold);
-    background: rgba(212,175,55,0.05);
-    font-weight: 600;
+  .agenda-list::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.4) 8%, rgba(212,175,55,0.4) 92%, transparent);
+  }
+  .agenda-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    position: relative;
+  }
+  .agenda-num {
+    margin-top: 0.5rem;
+  }
+  .agenda-item + .agenda-item {
+    border-top: 1px solid rgba(10,30,63,0.08);
   }
   .agenda-num {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--sky);
-    margin-right: 0.75rem;
-    display: inline-block;
-    min-width: 32px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #E6C200;
+    letter-spacing: 0.04em;
+    width: 38px;
+    height: 38px;
+    border: 2px solid rgba(212,175,55,0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
   }
-  .agenda-item.highlight .agenda-num { color: var(--gold); }
   .agenda-text {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #2a3a55;
+    padding-top: 8px;
   }
-  .agenda-item.highlight .agenda-text { color: var(--navy); }
 
   /* FOOTER */
   footer {
@@ -375,7 +399,7 @@
     </div>
 
     <div class="reveal" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0; font-size: 13px;">
-      <a href="congress.ics" download class="btn-outline" style="padding: 10px 16px; font-size: 13px;">📥 Télécharger .ics</a>
+      <!-- <a href="congress.ics" download class="btn-outline" style="padding: 10px 16px; font-size: 13px;">📥 Télécharger .ics</a> -->
       <!-- <a href="https://calendar.google.com/calendar/u/0/r/eventedit?text=Congrès+de+Création+de+la+F.A.E.C.I.C.&dates=20260502T190000/20260502T210000&ctz=America/Port-au-Prince&details=En+ligne+via+Zoom&location=Zoom&crm=AVAILABLE" target="_blank" class="btn-outline" style="padding: 10px 16px; font-size: 13px;">📅 Google Calendar</a> -->
       <a href="documents/congres/code_de_conduite.pdf" target="_blank" class="btn-outline" style="padding: 10px 16px; font-size: 13px;">📋 Code de conduite</a>
       <a href="index.html#statuts" target="_blank" class="btn-outline" style="padding: 10px 16px; font-size: 13px;">📄 Statuts</a>
@@ -395,20 +419,19 @@
 </section>
 
 <!-- ORDRE DU JOUR -->
-<section id="agenda-section" style="background: var(--warm-white); padding: 100px 2rem;">
+<section id="agenda-section" style="background: var(--cream); padding: 100px 2rem;">
   <div class="section-container">
     <p class="section-eyebrow reveal">PROGRAMME</p>
     <h2 class="section-title reveal">Ordre du <strong>jour</strong></h2>
 
-    <div class="letter-wrapper">
-      <div class="agenda-list reveal">
+    <div class="agenda-list reveal">
         <div class="agenda-item">
           <span class="agenda-num">1</span>
-          <span class="agenda-text"><a href="documents/congres/temps_de_recueillement.pdf" target="_blank" style="color: inherit; text-decoration: none; cursor: pointer; border-bottom: 1px solid currentColor;">Temps de recueillement</a></span>
+          <span class="agenda-text">Salutations et mot de bienvenue<br><span style="color: rgba(42,58,85,0.5); font-size: 13px;">P. Nestor Fils-Aimé, csv</span></span>
         </div>
         <div class="agenda-item">
           <span class="agenda-num">2</span>
-          <span class="agenda-text"><a href="documents/congres/mots_douverture.pdf" target="_blank" style="color: inherit; text-decoration: none; cursor: pointer; border-bottom: 1px solid currentColor;">Salutations et mot de bienvenue</a></span>
+          <span class="agenda-text"><a href="documents/congres/temps_de_recueillement_session_2.pdf" target="_blank" style="color: #2a3a55; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,0.6);">Temps de recueillement</a><br><span style="color: rgba(42,58,85,0.5); font-size: 13px;">P. Nestor Fils-Aimé, csv</span></span>
         </div>
         <div class="agenda-item">
           <span class="agenda-num">3</span>
@@ -416,33 +439,20 @@
         </div>
         <div class="agenda-item">
           <span class="agenda-num">4</span>
-          <span class="agenda-text">Présentation des objectifs de la rencontre : Rassembler la grande famille CICéenne en cette année du 60e anniversaire du Collège et mise sur pied de la F.A.E.C.I.C.</span>
+          <span class="agenda-text">Lecture du procès-verbal<br><span style="color: rgba(42,58,85,0.5); font-size: 13px;">Dr. Erline Mésadieu</span></span>
         </div>
         <div class="agenda-item">
           <span class="agenda-num">5</span>
-          <span class="agenda-text">Temps d'échanges sur les deux thématiques : 60e et Fondation</span>
+          <span class="agenda-text">Présentation des objectifs de la rencontre<br><span style="color: rgba(42,58,85,0.55); font-size: 13.5px;">Poursuivre l'examen des statuts révisés et procéder au vote de l'Assemblée sur les statuts proposés</span></span>
         </div>
         <div class="agenda-item">
           <span class="agenda-num">6</span>
-          <span class="agenda-text">Création d'un Comité du 60e en accord avec la Direction du Collège : Modalités de désignation des membres, Calendrier de travail</span>
+          <span class="agenda-text"><a href="documents/congres/statuts.pdf" target="_blank" style="color: #2a3a55; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,0.6);">Études des statuts de la F.A.E.C.I.C.</a><br><span style="color: rgba(42,58,85,0.5); font-size: 13px;">Lovely Jean-Louis, Jacques Bien-Aimé, Laurence Charleston, Vélina Elysée Charlier</span></span>
         </div>
         <div class="agenda-item">
           <span class="agenda-num">7</span>
-          <span class="agenda-text"><a href="documents/congres/statuts_et_reglement_interieur.pdf" target="_blank" style="color: inherit; text-decoration: none; cursor: pointer; border-bottom: 1px solid currentColor;">Études des statuts et du règlement intérieur de la F.A.E.C.I.C.</a></span>
+          <span class="agenda-text">Vote d'approbation et signature de l'acte constitutif</span>
         </div>
-        <div class="agenda-item highlight">
-          <span class="agenda-num">8</span>
-          <span class="agenda-text">VOTE d'approbation et signature de l'acte constitutif</span>
-        </div>
-        <div class="agenda-item highlight">
-          <span class="agenda-num">9</span>
-          <span class="agenda-text"><a href="etapes.html" style="color: inherit; text-decoration: none; cursor: pointer; border-bottom: 2px solid currentColor; font-weight: 600;">Calendrier des prochaines étapes</a></span>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-num">10</span>
-          <span class="agenda-text">Évaluation de la réunion</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -484,7 +494,7 @@
 </section>
 
 <!-- COMMENT SE PRÉPARER -->
-<section id="prep-section" style="background: var(--cream); padding: 100px 2rem;">
+<!-- <section id="prep-section" style="background: var(--cream); padding: 100px 2rem;">
   <div class="section-container">
     <p class="section-eyebrow reveal">AVANT LE CONGRÈS</p>
     <h2 class="section-title reveal">Comment se <strong>préparer</strong></h2>
@@ -535,7 +545,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- LETTRE DE CONVOCATION -->
 <section style="background: var(--warm-white); padding: 100px 2rem;">
