@@ -42,8 +42,27 @@
   }
 
   .header {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .header-logo {
+    flex-shrink: 0;
+  }
+
+  .header-logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .header-content {
+    text-align: center;
   }
 
   .title {
@@ -175,8 +194,13 @@
 
 <div class="container">
   <div class="header">
-    <p class="subtitle">CONGRÈS DE CRÉATION · 16 MAI 2026</p>
-    <h1 class="title">Ordre du <strong>jour</strong></h1>
+    <div class="header-logo">
+      <img src="logo.png" alt="F.A.E.C.I.C.">
+    </div>
+    <div class="header-content">
+      <p class="subtitle">CONGRÈS DE CRÉATION · 16 MAI 2026</p>
+      <h1 class="title">Ordre du <strong>jour</strong></h1>
+    </div>
   </div>
 
   <div class="agenda-list">
