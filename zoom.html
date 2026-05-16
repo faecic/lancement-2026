@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejoindre le Congrès — F.A.E.C.I.C. 2026</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #1E90FF;
+    --sky-dark: #0E7FDB;
+    --navy: #0A1E3F;
+    --warm-white: #FAFAF8;
+    --cream: #F5F1E8;
+    --gold: #D4AF37;
+    --warm-gray: #7A7A7A;
+    --emerald: #2D7D6E;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: var(--navy); color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1.5rem; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,30,63,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+  .nav-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-mark-label { font-family: var(--font-body); font-weight: 600; font-size: 15px; letter-spacing: 0.12em; color: #fff; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* CARD */
+  .card {
+    width: 100%;
+    max-width: 680px;
+    margin-top: 64px;
+  }
+
+  /* DATE LINE */
+  .session-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .date-line {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  /* TIME ZONES */
+  .tz-primary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .tz-primary-flag { font-size: 32px; margin-bottom: 0.5rem; }
+  .tz-primary-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .tz-primary-time {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 14vw, 100px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .tz-primary-zone {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tz-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .tz-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1.25rem 0.75rem;
+    text-align: center;
+  }
+  .tz-card-flag { font-size: 22px; margin-bottom: 0.4rem; }
+  .tz-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.4rem;
+  }
+  .tz-card-time {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .tz-card-zone {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ZOOM INFO */
+  .zoom-section {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .zoom-btn {
+    display: block;
+    background: var(--sky);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 1.5rem;
+  }
+  .zoom-btn:hover { background: var(--sky-dark); transform: translateY(-1px); }
+
+  .zoom-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .zoom-meta-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .zoom-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.5rem;
+  }
+  .zoom-meta-value {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+
+  /* NAV LINKS */
+  .page-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .page-links a {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .page-links a:hover { color: #fff; }
+  .page-links span { color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 480px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .tz-grid { grid-template-columns: 1fr; }
+    .zoom-meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-mark" href="index.html#hero">
+    <img src="logo.png" alt="F.A.E.C.I.C." style="width:36px; height:36px; border-radius:50%; object-fit:cover;">
+    <span class="nav-mark-label">F.A.E.C.I.C.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#congres">Accueil</a></li>
+    <li><a href="congres.html">Convocation</a></li>
+  </ul>
+</nav>
+
+<div class="card">
+  <p class="session-label">2e session · Congrès de Création</p>
+  <p class="date-line">Samedi 16 mai 2026</p>
+
+  <!-- Haiti primary -->
+  <div class="tz-primary">
+    <div class="tz-primary-flag">🇭🇹</div>
+    <div class="tz-primary-label">Haïti</div>
+    <div class="tz-primary-time">12h00</div>
+    <div class="tz-primary-zone">EDT · UTC−4</div>
+  </div>
+
+  <!-- Other zones -->
+  <div class="tz-grid">
+    <div class="tz-card">
+      <div class="tz-card-flag">🇺🇸</div>
+      <div class="tz-card-label">États-Unis (Est)</div>
+      <div class="tz-card-time">12h00</div>
+      <div class="tz-card-zone">EDT · UTC−4</div>
+    </div>
+    <div class="tz-card">
+      <div class="tz-card-flag">🇫🇷</div>
+      <div class="tz-card-label">Paris</div>
+      <div class="tz-card-time">18h00</div>
+      <div class="tz-card-zone">CEST · UTC+2</div>
+    </div>
+    <div class="tz-card">
+      <div class="tz-card-flag">🇮🇹</div>
+      <div class="tz-card-label">Rome</div>
+      <div class="tz-card-time">18h00</div>
+      <div class="tz-card-zone">CEST · UTC+2</div>
+    </div>
+  </div>
+
+  <!-- Zoom -->
+  <div class="zoom-section">
+    <a href="https://us02web.zoom.us/j/87415442432?pwd=a0cb1VOfUAuD0MeHPPG4lTybMarPDA.1"
+       target="_blank" class="zoom-btn">Rejoindre via Zoom</a>
+    <div class="zoom-meta">
+      <div class="zoom-meta-item">
+        <div class="zoom-meta-label">ID de réunion</div>
+        <div class="zoom-meta-value">874 1544 2432</div>
+      </div>
+      <div class="zoom-meta-item">
+        <div class="zoom-meta-label">Code secret</div>
+        <div class="zoom-meta-value" id="zpc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="page-links">
+    <a href="index.html#congres">← Retour à l'accueil</a>
+    <span>·</span>
+    <a href="congres.html">Lettre de convocation</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('zpc').textContent = atob('MTE4NTAy');
+</script>
+</body>
+</html>
